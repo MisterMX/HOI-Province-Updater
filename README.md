@@ -1,6 +1,6 @@
 # Project info
 
-Simple python script for Hearts of Iron Darkest Hour that updates the province IDs in `input/revolt_new.txt` by using `input/province_names_new.csv` and `input/province_names_old.csv` and writes it into `output/revolt_updated.txt`.
+Simple python script for Hearts of Iron Darkest Hour that updates the province IDs in `input/revolt_old.txt` by using `input/province_names_new.csv` and `input/province_names_old.csv` and writes it into `output/revolt_updated.txt`.
 
 # How to run the script
 

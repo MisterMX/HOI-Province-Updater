@@ -4,7 +4,7 @@ from province_reader import read_province_file_by_id, read_province_file_by_name
 
 class HoiProvinceUpdater:
     def __init__(self, path_revolt_new, path_provinces_old, path_provinces_new):
-        self.revolt_new = read_revolt_file(path_revolt_new)
+        self.revolt = read_revolt_file(path_revolt_new)
         self.provinces_old = read_province_file_by_id(path_provinces_old)
         self.provinces_new = read_province_file_by_name(path_provinces_new)
 
@@ -43,15 +43,15 @@ class HoiProvinceUpdater:
                 print('{0}.{1}: Skipped not existing province'.format(country_name, attr_name))
 
     def updateProvince(self):
-        for country_name, country_attrs in self.revolt_new.items():
+        for country_name, country_attrs in self.revolt.items():
             self.updateArrayIdAttribute(country_name, country_attrs, 'minimum')
             self.updateArrayIdAttribute(country_name, country_attrs, 'claims')
             self.updateArrayIdAttribute(country_name, country_attrs, 'extra')
             self.updateSingleIdAttribute(country_name, country_attrs, 'capital')
 
     def save(self, path):
-        write_revolt_file(path, self.revolt_new)
+        write_revolt_file(path, self.revolt)
 
-updater = HoiProvinceUpdater('input/revolt_new.txt', 'input/province_names_old.csv', 'input/province_names_new.csv')
+updater = HoiProvinceUpdater('input/revolt_old.txt', 'input/province_names_old.csv', 'input/province_names_new.csv')
 updater.updateProvince()
 updater.save('output/revolt_updated.txt')
